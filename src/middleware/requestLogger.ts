@@ -5,7 +5,7 @@ const stream: StreamOptions = {
   write: (message: string) => process.stdout.write(message),
 };
 
-const skip = (): boolean => env.isProduction() && env.LOG_LEVEL === "none";
+const skip = (): boolean => false;
 
 export const requestLogger = morgan(
   env.isProduction() ? "combined" : "dev",

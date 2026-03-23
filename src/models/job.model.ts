@@ -82,11 +82,11 @@ const jobSchema = new Schema<IJobDocument>(
     timestamps: true,
     versionKey: false,
     toJSON: {
-      transform: (_doc, ret) => {
-        ret.id = ret._id;
-        delete ret._id;
-        return ret;
-      },
+      transform: (_doc, ret: Record<string, any>) => {
+  ret.id = ret._id;
+  delete ret._id;
+  return ret;
+},
     },
   }
 );

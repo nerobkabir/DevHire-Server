@@ -1,5 +1,4 @@
 import { User } from "../models/user.model";
-import { Role } from "../types/auth.types";
 import {
   UpdateProfileDTO,
   ChangeRoleDTO,

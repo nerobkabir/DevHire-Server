@@ -1,6 +1,6 @@
 import { body, validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
-import { Role, PUBLIC_ROLES } from "../types/auth.types";
+import { PUBLIC_ROLES } from "../types/auth.types";
 
 // ── Run validation ────────────────────────────────────────────────────────────
 export const validate = (

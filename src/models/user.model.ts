@@ -1,6 +1,6 @@
 import { Schema, model, Model } from "mongoose";
 import bcrypt from "bcryptjs";
-import { IUserDocument, IUser } from "../types/user.types";
+import { IUserDocument } from "../types/user.types";
 import { Role } from "../types/auth.types";
 
 interface IUserModel extends Model<IUserDocument> {
@@ -79,12 +79,12 @@ const userSchema = new Schema<IUserDocument, IUserModel>(
     timestamps: true,
     versionKey: false,
     toJSON: {
-      transform: (_doc, ret) => {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.password;   // never leak password
-        return ret;
-      },
+      transform: (_doc, ret: Record<string, any>) => {
+  ret.id = ret._id;
+  delete ret._id;
+  delete ret.password;
+  return ret;
+},
     },
   }
 );

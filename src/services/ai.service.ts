@@ -1,5 +1,4 @@
 import { gemini }    from "../config/gemini.client";
-import { Job }       from "../models/job.model";
 import { Review }    from "../models/review.model";
 import {
   ChatDTO,

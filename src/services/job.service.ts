@@ -43,7 +43,7 @@ export class JobService {
     }
 
     // ── Build sort ────────────────────────────────────────────────────────────
-    const SORT_MAP: Record<string, Record<string, number>> = {
+    const SORT_MAP: Record<string, { [key: string]: 1 | -1 }> = {
       "salary":     { salary:    1 },
       "-salary":    { salary:   -1 },
       "createdAt":  { createdAt: 1 },
