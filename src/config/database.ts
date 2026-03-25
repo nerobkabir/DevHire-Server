@@ -1,13 +1,13 @@
 import mongoose, { ConnectOptions } from "mongoose";
 import { env } from "./env";
 
-// ── Connection state ──────────────────────────────────────────────────────────
+// Connection state 
 let isConnected = false;
 
-// ── Options ───────────────────────────────────────────────────────────────────
+// Options
 const mongooseOptions: ConnectOptions = {
   dbName:             env.DB_NAME,
-  serverSelectionTimeoutMS: 5_000,   // fail fast if server is unreachable
+  serverSelectionTimeoutMS: 5_000,   
   socketTimeoutMS:         45_000,   // drop idle socket after 45 s
   maxPoolSize:             10,        // max simultaneous connections
   minPoolSize:             2,         // keep at least 2 warm
@@ -15,7 +15,7 @@ const mongooseOptions: ConnectOptions = {
   writeConcern:            { w: "majority" },
 };
 
-// ── Event listeners ───────────────────────────────────────────────────────────
+// Event listeners
 const attachListeners = (): void => {
   const { connection } = mongoose;
 
@@ -40,7 +40,7 @@ const attachListeners = (): void => {
   });
 };
 
-// ── Connect ───────────────────────────────────────────────────────────────────
+// Connect 
 export const connectDB = async (): Promise<void> => {
   if (isConnected) {
     console.log("[mongodb] Already connected, reusing existing connection");
@@ -66,7 +66,7 @@ export const connectDB = async (): Promise<void> => {
   }
 };
 
-// ── Disconnect ────────────────────────────────────────────────────────────────
+// Disconnect
 export const disconnectDB = async (): Promise<void> => {
   if (!isConnected) return;
 
@@ -80,7 +80,7 @@ export const disconnectDB = async (): Promise<void> => {
   }
 };
 
-// ── Health check ──────────────────────────────────────────────────────────────
+// Health check
 export const getConnectionStatus = (): {
   isConnected: boolean;
   readyState: number;

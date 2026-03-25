@@ -12,7 +12,7 @@ import {
 
 const router = Router();
 
-// ── Public: get all reviews for a job ─────────────────────────────────────────
+// ── Public: get all reviews for a job
 router.get(
   "/job/:jobId",
   jobIdParamRule,
@@ -21,7 +21,7 @@ router.get(
   reviewController.getJobReviews
 );
 
-// ── Protected routes ──────────────────────────────────────────────────────────
+// ── Protected routes 
 
 // USER: submit a review
 router.post(

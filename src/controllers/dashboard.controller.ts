@@ -4,7 +4,7 @@ import { AuthRequest }      from "../types/auth.types";
 
 export class DashboardController {
 
-  // ── GET /dashboard/stats ──────────────────────────────────────────────────
+  // GET /dashboard/stats 
   getStats = async (
     _req: AuthRequest,
     res:  Response,
@@ -20,7 +20,7 @@ export class DashboardController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /dashboard/chart-data/bar ─────────────────────────────────────────
+  // GET /dashboard/chart-data/bar 
   getBarChartData = async (
     _req: AuthRequest,
     res:  Response,
@@ -36,7 +36,7 @@ export class DashboardController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /dashboard/chart-data/line ────────────────────────────────────────
+  // GET /dashboard/chart-data/line
   getLineChartData = async (
     _req: AuthRequest,
     res:  Response,
@@ -52,7 +52,7 @@ export class DashboardController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /dashboard/chart-data/pie ─────────────────────────────────────────
+  // GET /dashboard/chart-data/pie 
   getPieChartData = async (
     _req: AuthRequest,
     res:  Response,
@@ -68,7 +68,7 @@ export class DashboardController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /dashboard/recent-activity ────────────────────────────────────────
+  // GET /dashboard/recent-activity 
   getRecentActivity = async (
     _req: AuthRequest,
     res:  Response,

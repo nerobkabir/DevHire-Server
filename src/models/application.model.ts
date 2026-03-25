@@ -40,7 +40,7 @@ const applicationSchema = new Schema<IApplicationDocument>(
   }
 );
 
-// ── One user can apply to a job only once ─────────────────────────────────────
+// ── One user can apply to a job only once 
 applicationSchema.index({ jobId: 1, applicantId: 1 }, { unique: true });
 applicationSchema.index({ applicantId: 1 });
 applicationSchema.index({ jobId: 1 });

@@ -9,7 +9,7 @@ import {
 
 export class ReviewService {
 
-  // ── Create review (USER only) ─────────────────────────────────────────────
+  // ── Create review (USER only) 
   async createReview(
     dto:    CreateReviewDTO,
     userId: string
@@ -34,7 +34,7 @@ export class ReviewService {
     return review.populate("userId", "name avatar");
   }
 
-  // ── Get all reviews for a job (public) ────────────────────────────────────
+  // ── Get all reviews for a job (public) 
   async getJobReviews(jobId: string, query: ReviewQuery) {
     const job = await Job.findById(jobId);
     if (!job) {
@@ -70,7 +70,7 @@ export class ReviewService {
     };
   }
 
-  // ── Update own review (USER only) ─────────────────────────────────────────
+  // ── Update own review (USER only)
   async updateReview(
     reviewId: string,
     dto:      UpdateReviewDTO,
@@ -95,7 +95,7 @@ export class ReviewService {
     return review.populate("userId", "name avatar");
   }
 
-  // ── Delete review (own or ADMIN) ──────────────────────────────────────────
+  // ── Delete review (own or ADMIN)
   async deleteReview(
     reviewId:  string,
     userId:    string,

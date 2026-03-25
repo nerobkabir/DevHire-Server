@@ -10,7 +10,7 @@ import {
 
 export class AiService {
 
-  // ── 1. AI Chatbot — job suggestions ───────────────────────────────────────
+  // ── 1. AI Chatbot — job suggestions 
   async chat(dto: ChatDTO): Promise<{ reply: string }> {
     // Build chat history for Gemini
     const history = (dto.history ?? []).map((msg) => ({
@@ -36,7 +36,7 @@ Frontend, Backend, Fullstack, DevOps, Mobile, Data, AI/ML.
     return { reply };
   }
 
-  // ── 2. AI Search Assistant ─────────────────────────────────────────────────
+  // ── 2. AI Search Assistant 
   async searchAssistant(dto: SearchAssistantDTO): Promise<{
     suggestion: string;
     keywords:   string[];
@@ -66,7 +66,7 @@ Available categories: Frontend, Backend, Fullstack, DevOps, Mobile, Data, AI/ML,
     };
   }
 
-  // ── 3. AI Job Description Generator ───────────────────────────────────────
+  // ── 3. AI Job Description Generator 
   async generateDescription(dto: GenerateDescriptionDTO): Promise<{ description: string }> {
     const skillsText = dto.skills?.length
       ? `Required skills: ${dto.skills.join(", ")}`
@@ -93,7 +93,7 @@ Requirements:
     return { description: description.trim() };
   }
 
-  // ── 4. Review Summarizer ──────────────────────────────────────────────────
+  // ── 4. Review Summarizer 
   async summarizeReviews(dto: ReviewSummaryDTO): Promise<{
     summary:   string;
     sentiment: "positive" | "neutral" | "negative";
@@ -144,7 +144,7 @@ ${reviewsText}
     };
   }
 
-  // ── 5. Resume Analyzer ────────────────────────────────────────────────────
+  // ── 5. Resume Analyzer 
   async analyzeResume(dto: ResumeAnalysisDTO): Promise<{
     skills:        string[];
     experience:    string;
@@ -189,7 +189,7 @@ ${dto.resumeText}
     };
   }
 
-  // ── Helper: safely parse JSON from Gemini response ────────────────────────
+  // ── Helper: safely parse JSON from Gemini response
   private parseJSON(raw: string): Record<string, any> {
     try {
       // Strip markdown code blocks if present

@@ -5,7 +5,7 @@ import { UpdateProfileDTO, ChangeRoleDTO, UserQuery } from "../types/user.types"
 
 export class UserController {
 
-  // ── GET /users  (admin only) ──────────────────────────────────────────────
+  // ── GET /users  (admin only)
   getAllUsers = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
       const result = await userService.getAllUsers(req.query as UserQuery);
@@ -13,7 +13,7 @@ export class UserController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /users/:id  (own or admin) ────────────────────────────────────────
+  // ── GET /users/:id  (own or admin)
   getUserById = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
       const isAdmin     = req.user!.role === Role.ADMIN;
@@ -31,7 +31,7 @@ export class UserController {
     } catch (err) { next(err); }
   };
 
-  // ── PATCH /users/:id  (own or admin) ─────────────────────────────────────
+  // ── PATCH /users/:id  (own or admin) 
   updateProfile = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
       const dto: UpdateProfileDTO = req.body;
@@ -48,7 +48,7 @@ export class UserController {
     } catch (err) { next(err); }
   };
 
-  // ── DELETE /users/:id  (admin only) ───────────────────────────────────────
+  // ── DELETE /users/:id  (admin only)
   deleteUser = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
       await userService.deleteUser(req.params.id);
@@ -56,7 +56,7 @@ export class UserController {
     } catch (err) { next(err); }
   };
 
-  // ── PATCH /users/:id/role  (admin only) ───────────────────────────────────
+  // ── PATCH /users/:id/role  (admin only)
   changeRole = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
       const dto: ChangeRoleDTO = req.body;

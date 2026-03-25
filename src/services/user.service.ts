@@ -8,7 +8,7 @@ import {
 
 export class UserService {
 
-  // ── Get all users ─────────────────────────────────────────────────────────
+  // ── Get all users 
   async getAllUsers(query: UserQuery) {
     const page  = Math.max(1, parseInt(query.page  ?? "1"));
     const limit = Math.min(50, parseInt(query.limit ?? "10"));
@@ -36,7 +36,7 @@ export class UserService {
     };
   }
 
-  // ── Get single user ───────────────────────────────────────────────────────
+  // ── Get single user 
   async getUserById(id: string): Promise<IUserDocument> {
     const user = await User.findById(id);
     if (!user) {
@@ -45,7 +45,7 @@ export class UserService {
     return user;
   }
 
-  // ── Update profile ────────────────────────────────────────────────────────
+  // ── Update profile 
   async updateProfile(
     targetId:    string,
     dto:         UpdateProfileDTO,
@@ -90,7 +90,7 @@ export class UserService {
     return user;
   }
 
-  // ── Delete user ───────────────────────────────────────────────────────────
+  // ── Delete user 
   async deleteUser(id: string): Promise<void> {
     const user = await User.findByIdAndDelete(id);
     if (!user) {
@@ -98,7 +98,7 @@ export class UserService {
     }
   }
 
-  // ── Change role ───────────────────────────────────────────────────────────
+  // ── Change role
   async changeRole(id: string, dto: ChangeRoleDTO): Promise<IUserDocument> {
     const user = await User.findByIdAndUpdate(
       id,

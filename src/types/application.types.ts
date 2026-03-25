@@ -1,6 +1,6 @@
 import { Document, Types } from "mongoose";
 
-// ── Enums ─────────────────────────────────────────────────────────────────────
+// ── Enums 
 export enum ApplicationStatus {
   PENDING   = "PENDING",
   REVIEWED  = "REVIEWED",
@@ -9,7 +9,7 @@ export enum ApplicationStatus {
   HIRED     = "HIRED",
 }
 
-// ── Interface ─────────────────────────────────────────────────────────────────
+// ── Interface 
 export interface IApplication {
   jobId:        Types.ObjectId;
   applicantId:  Types.ObjectId;
@@ -23,7 +23,7 @@ export interface IApplicationDocument extends IApplication, Document {
   _id: Types.ObjectId;
 }
 
-// ── DTOs ──────────────────────────────────────────────────────────────────────
+// ── DTOs 
 export interface CreateApplicationDTO {
   jobId:        string;
   coverLetter?: string;

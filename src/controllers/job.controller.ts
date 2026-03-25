@@ -5,7 +5,7 @@ import { CreateJobDTO, UpdateJobDTO, JobQuery } from "../types/job.types";
 
 export class JobController {
 
-  // ── POST /jobs ────────────────────────────────────────────────────────────
+  // POST /jobs
   createJob = async (
     req: AuthRequest,
     res: Response,
@@ -23,7 +23,7 @@ export class JobController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /jobs ─────────────────────────────────────────────────────────────
+  // GET /jobs 
   getAllJobs = async (
     req: Request,
     res: Response,
@@ -35,7 +35,7 @@ export class JobController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /jobs/:id ─────────────────────────────────────────────────────────
+  // GET /jobs/:id 
   getJobById = async (
     req: Request,
     res: Response,
@@ -47,7 +47,7 @@ export class JobController {
     } catch (err) { next(err); }
   };
 
-  // ── PATCH /jobs/:id ───────────────────────────────────────────────────────
+  // PATCH /jobs/:id
   updateJob = async (
     req: AuthRequest,
     res: Response,
@@ -72,7 +72,7 @@ export class JobController {
     } catch (err) { next(err); }
   };
 
-  // ── DELETE /jobs/:id ──────────────────────────────────────────────────────
+  // DELETE /jobs/:id
   deleteJob = async (
     req: AuthRequest,
     res: Response,

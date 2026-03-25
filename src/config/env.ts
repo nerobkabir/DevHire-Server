@@ -16,7 +16,7 @@ export const env = {
   DB_NAME:        requireEnv("DB_NAME",        "myapp"),
   JWT_SECRET:     requireEnv("JWT_SECRET"),
   JWT_EXPIRES_IN: requireEnv("JWT_EXPIRES_IN", "7d"),
-  GEMINI_API_KEY: requireEnv("GEMINI_API_KEY"),          // ← এটা যোগ করো
+  GEMINI_API_KEY: requireEnv("GEMINI_API_KEY"),         
   isDevelopment:  () => process.env.NODE_ENV === "development",
   isProduction:   () => process.env.NODE_ENV === "production",
 } as const;

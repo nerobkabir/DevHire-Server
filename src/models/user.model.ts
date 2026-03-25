@@ -42,7 +42,7 @@ const userSchema = new Schema<IUserDocument, IUserModel>(
       default: Role.USER,
     },
 
-    // ── Extended profile fields ────────────────────────────────────────────
+    // ── Extended profile fields 
     bio: {
       type:      String,
       trim:      true,
@@ -89,7 +89,7 @@ const userSchema = new Schema<IUserDocument, IUserModel>(
   }
 );
 
-// ── Hash password before save ─────────────────────────────────────────────────
+// ── Hash password before save
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   const salt    = await bcrypt.genSalt(12);
@@ -97,7 +97,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-// ── Static ────────────────────────────────────────────────────────────────────
+// ── Static 
 userSchema.statics.findByEmail = function (
   email: string
 ): Promise<IUserDocument | null> {

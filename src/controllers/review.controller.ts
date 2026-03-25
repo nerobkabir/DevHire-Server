@@ -9,7 +9,7 @@ import {
 
 export class ReviewController {
 
-  // ── POST /reviews  (USER only) ────────────────────────────────────────────
+  //  POST /reviews  (USER only)
   createReview = async (
     req: AuthRequest,
     res: Response,
@@ -27,7 +27,7 @@ export class ReviewController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /reviews/job/:jobId  (public) ─────────────────────────────────────
+  // GET /reviews/job/:jobId  (public)
   getJobReviews = async (
     req: Request,
     res: Response,
@@ -47,7 +47,7 @@ export class ReviewController {
     } catch (err) { next(err); }
   };
 
-  // ── PATCH /reviews/:id  (own review) ─────────────────────────────────────
+  // ── PATCH /reviews/:id  (own review) 
   updateReview = async (
     req: AuthRequest,
     res: Response,
@@ -69,7 +69,7 @@ export class ReviewController {
     } catch (err) { next(err); }
   };
 
-  // ── DELETE /reviews/:id  (own or ADMIN) ───────────────────────────────────
+  // ── DELETE /reviews/:id  (own or ADMIN) 
   deleteReview = async (
     req: AuthRequest,
     res: Response,

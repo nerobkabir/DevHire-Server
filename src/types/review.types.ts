@@ -1,6 +1,6 @@
 import { Document, Types } from "mongoose";
 
-// ── Interface ─────────────────────────────────────────────────────────────────
+// ── Interface 
 export interface IReview {
   jobId:     Types.ObjectId;
   userId:    Types.ObjectId;
@@ -14,7 +14,7 @@ export interface IReviewDocument extends IReview, Document {
   _id: Types.ObjectId;
 }
 
-// ── DTOs ──────────────────────────────────────────────────────────────────────
+// ── DTOs
 export interface CreateReviewDTO {
   jobId:   string;
   rating:  number;

@@ -1,6 +1,6 @@
 import { body, param, query } from "express-validator";
 
-// ── Create review ─────────────────────────────────────────────────────────────
+// ── Create review
 export const createReviewRules = [
   body("jobId")
     .notEmpty().withMessage("Job ID is required")
@@ -17,7 +17,7 @@ export const createReviewRules = [
     .withMessage("Comment must be 10–1000 characters"),
 ];
 
-// ── Update review ─────────────────────────────────────────────────────────────
+// ── Update review 
 export const updateReviewRules = [
   body("rating")
     .optional()
@@ -30,7 +30,7 @@ export const updateReviewRules = [
     .withMessage("Comment must be 10–1000 characters"),
 ];
 
-// ── Params ────────────────────────────────────────────────────────────────────
+// ── Params 
 export const objectIdRule = [
   param("id").isMongoId().withMessage("Invalid review ID"),
 ];
@@ -39,7 +39,7 @@ export const jobIdParamRule = [
   param("jobId").isMongoId().withMessage("Invalid job ID"),
 ];
 
-// ── Query ─────────────────────────────────────────────────────────────────────
+// ── Query 
 export const reviewQueryRules = [
   query("page")
     .optional().isInt({ min: 1 }).withMessage("Page must be a positive integer"),

@@ -11,11 +11,11 @@ import {
 
 const router = Router();
 
-// ── Public routes (no auth required) ─────────────────────────────────────────
+// ── Public routes (no auth required) 
 router.get("/",    getJobsQueryRules, validate, jobController.getAllJobs);
 router.get("/:id", objectIdRule,      validate, jobController.getJobById);
 
-// ── Protected routes ──────────────────────────────────────────────────────────
+// ── Protected routes
 
 // RECRUITER or ADMIN → create job
 router.post(

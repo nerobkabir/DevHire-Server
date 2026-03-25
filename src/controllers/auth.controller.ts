@@ -4,7 +4,7 @@ import { AuthRequest, RegisterDTO, LoginDTO, Role } from "../types/auth.types";
 
 export class AuthController {
 
-  // ── POST /auth/register ───────────────────────────────────────────────────
+  // POST /auth/register 
   register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const dto: RegisterDTO = req.body;
@@ -13,7 +13,7 @@ export class AuthController {
     } catch (err) { next(err); }
   };
 
-  // ── POST /auth/login ──────────────────────────────────────────────────────
+  // POST /auth/login 
   login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const dto: LoginDTO = req.body;
@@ -22,7 +22,7 @@ export class AuthController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /auth/me  (protected) ─────────────────────────────────────────────
+  // GET /auth/me  (protected) 
   getMe = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
       const user = await authService.getProfile(req.user!.userId);
@@ -30,7 +30,7 @@ export class AuthController {
     } catch (err) { next(err); }
   };
 
-  // ── PATCH /auth/role  (ADMIN only) ────────────────────────────────────────
+  // PATCH /auth/role  (ADMIN only)
   changeRole = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const { userId, role } = req.body;

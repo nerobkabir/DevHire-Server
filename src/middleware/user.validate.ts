@@ -1,7 +1,7 @@
 import { body, param, query } from "express-validator";
 import { Role } from "../types/auth.types";
 
-// ── Update profile ────────────────────────────────────────────────────────────
+// ── Update profile
 export const updateProfileRules = [
   body("name")
     .optional().trim()
@@ -41,7 +41,7 @@ export const updateProfileRules = [
   }),
 ];
 
-// ── Change role ───────────────────────────────────────────────────────────────
+// ── Change role
 export const changeRoleRules = [
   body("role")
     .notEmpty().withMessage("Role is required")
@@ -49,12 +49,12 @@ export const changeRoleRules = [
     .withMessage(`Role must be one of: ${Object.values(Role).join(", ")}`),
 ];
 
-// ── Param: MongoDB ObjectId ───────────────────────────────────────────────────
+// ── Param: MongoDB ObjectId 
 export const objectIdRule = [
   param("id").isMongoId().withMessage("Invalid user ID"),
 ];
 
-// ── Query params for GET /users ───────────────────────────────────────────────
+// ── Query params for GET /users 
 export const getUsersQueryRules = [
   query("page")
     .optional().isInt({ min: 1 }).withMessage("Page must be a positive integer"),

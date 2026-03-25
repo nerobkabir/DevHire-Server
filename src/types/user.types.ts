@@ -1,7 +1,7 @@
 import { Document, Types } from "mongoose";
 import { Role } from "./auth.types";
 
-// ── User document ─────────────────────────────────────────────────────────────
+// ── User document 
 export interface IUser {
   name:      string;
   email:     string;
@@ -20,7 +20,7 @@ export interface IUserDocument extends IUser, Document {
   _id: Types.ObjectId;
 }
 
-// ── DTOs ──────────────────────────────────────────────────────────────────────
+// ── DTOs 
 export interface UpdateProfileDTO {
   name?:    string;
   email?:   string;

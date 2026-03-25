@@ -11,7 +11,7 @@ import {
 
 export class AiController {
 
-  // ── POST /ai/chat ─────────────────────────────────────────────────────────
+  // POST /ai/chat
   chat = async (
     req: AuthRequest,
     res: Response,
@@ -29,7 +29,7 @@ export class AiController {
     } catch (err) { next(err); }
   };
 
-  // ── POST /ai/search-assistant ─────────────────────────────────────────────
+  //  POST /ai/search-assistant 
   searchAssistant = async (
     req: AuthRequest,
     res: Response,
@@ -47,7 +47,7 @@ export class AiController {
     } catch (err) { next(err); }
   };
 
-  // ── POST /ai/generate-description ────────────────────────────────────────
+  // POST /ai/generate-description 
   generateDescription = async (
     req: AuthRequest,
     res: Response,
@@ -65,7 +65,7 @@ export class AiController {
     } catch (err) { next(err); }
   };
 
-  // ── POST /ai/review-summary ───────────────────────────────────────────────
+  // POST /ai/review-summary
   summarizeReviews = async (
     req: AuthRequest,
     res: Response,
@@ -83,7 +83,7 @@ export class AiController {
     } catch (err) { next(err); }
   };
 
-  // ── POST /ai/analyze-resume ───────────────────────────────────────────────
+  // POST /ai/analyze-resume
   analyzeResume = async (
     req: AuthRequest,
     res: Response,

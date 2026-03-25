@@ -5,7 +5,7 @@ import { Review }      from "../models/review.model";
 
 export class DashboardService {
 
-  // ── Overview stats ─────────────────────────────────────────────────────────
+  // ── Overview stats 
   async getStats() {
     const [
       totalUsers,
@@ -50,7 +50,7 @@ export class DashboardService {
     };
   }
 
-  // ── Bar chart: jobs posted per month (last 6 months) ──────────────────────
+  // ── Bar chart: jobs posted per month (last 6 months) 
   async getBarChartData() {
     const sixMonthsAgo = new Date();
     sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
@@ -109,7 +109,7 @@ export class DashboardService {
     };
   }
 
-  // ── Line chart: daily new registrations (last 30 days) ────────────────────
+  // ── Line chart: daily new registrations (last 30 days)
   async getLineChartData() {
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -155,7 +155,7 @@ export class DashboardService {
     };
   }
 
-  // ── Pie chart: jobs by category ────────────────────────────────────────────
+  // ── Pie chart: jobs by category 
   async getPieChartData() {
     const [jobsByCategory, applicationsByStatus, usersByRole] = await Promise.all([
       Job.aggregate([
@@ -179,7 +179,7 @@ export class DashboardService {
     };
   }
 
-  // ── Recent activity ────────────────────────────────────────────────────────
+  // ── Recent activity 
   async getRecentActivity() {
     const [recentUsers, recentJobs, recentApplications] = await Promise.all([
       User.find().sort({ createdAt: -1 }).limit(5).select("name email role createdAt"),
@@ -194,7 +194,7 @@ export class DashboardService {
     return { recentUsers, recentJobs, recentApplications };
   }
 
-  // ── Helpers ────────────────────────────────────────────────────────────────
+  // ── Helpers 
   private toObject(arr: { _id: string; count: number }[]) {
     return arr.reduce<Record<string, number>>((acc, item) => {
       acc[item._id] = item.count;

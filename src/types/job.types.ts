@@ -1,6 +1,6 @@
 import { Document, Types } from "mongoose";
 
-// ── Enums ─────────────────────────────────────────────────────────────────────
+// ── Enums
 export enum JobStatus {
   OPEN   = "OPEN",
   CLOSED = "CLOSED",
@@ -27,7 +27,7 @@ export enum JobType {
   INTERNSHIP = "Internship",
 }
 
-// ── Interfaces ────────────────────────────────────────────────────────────────
+// ── Interfaces
 export interface IJob {
   title:          string;
   description:    string;
@@ -47,7 +47,7 @@ export interface IJobDocument extends IJob, Document {
   _id: Types.ObjectId;
 }
 
-// ── DTOs ──────────────────────────────────────────────────────────────────────
+// ── DTOs 
 export interface CreateJobDTO {
   title:          string;
   description:    string;

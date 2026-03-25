@@ -8,19 +8,19 @@ import {
 
 export class JobService {
 
-  // ── Create job ────────────────────────────────────────────────────────────
+  // ── Create job 
   async createJob(dto: CreateJobDTO, createdBy: string): Promise<IJobDocument> {
     const job = await Job.create({ ...dto, createdBy });
     return job;
   }
 
-  // ── Get all jobs ──────────────────────────────────────────────────────────
+  // ── Get all jobs 
   async getAllJobs(query: JobQuery) {
     const page  = Math.max(1, parseInt(query.page  ?? "1"));
     const limit = Math.min(50, parseInt(query.limit ?? "10"));
     const skip  = (page - 1) * limit;
 
-    // ── Build filter ─────────────────────────────────────────────────────────
+    // ── Build filter 
     const filter: Record<string, unknown> = { status: "OPEN" };
 
     if (query.search) {
@@ -42,7 +42,7 @@ export class JobService {
       filter.salary = salaryFilter;
     }
 
-    // ── Build sort ────────────────────────────────────────────────────────────
+    // ── Build sort 
     const SORT_MAP: Record<string, { [key: string]: 1 | -1 }> = {
       "salary":     { salary:    1 },
       "-salary":    { salary:   -1 },
@@ -52,7 +52,7 @@ export class JobService {
 
     const sortObj = SORT_MAP[query.sort ?? "-createdAt"] ?? { createdAt: -1 };
 
-    // ── Execute ───────────────────────────────────────────────────────────────
+    // ── Execute 
     const [jobs, total] = await Promise.all([
       Job.find(filter)
         .sort(sortObj)
@@ -68,7 +68,7 @@ export class JobService {
     };
   }
 
-  // ── Get single job ────────────────────────────────────────────────────────
+  // ── Get single job 
   async getJobById(id: string): Promise<IJobDocument> {
     const job = await Job.findById(id).populate("createdBy", "name email");
     if (!job) {
@@ -77,7 +77,7 @@ export class JobService {
     return job;
   }
 
-  // ── Update job ────────────────────────────────────────────────────────────
+  // ── Update job 
   async updateJob(
     jobId:       string,
     dto:         UpdateJobDTO,
@@ -104,7 +104,7 @@ export class JobService {
     return updated!;
   }
 
-  // ── Delete job ────────────────────────────────────────────────────────────
+  // ── Delete job 
   async deleteJob(
     jobId:       string,
     requesterId: string,

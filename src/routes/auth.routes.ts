@@ -5,14 +5,14 @@ import { registerRules, loginRules, validate }    from "../middleware/validate.m
 
 const router = Router();
 
-// ── Public ────────────────────────────────────────────────────────────────────
+// ── Public 
 router.post("/register", registerRules, validate, authController.register);
 router.post("/login",    loginRules,    validate, authController.login);
 
-// ── Protected: any logged-in user ─────────────────────────────────────────────
+// ── Protected: any logged-in user
 router.get("/me", protect, authController.getMe);
 
-// ── Admin only: change any user's role ───────────────────────────────────────
+// ── Admin only: change any user's role 
 router.patch("/role", protect, adminOnly, authController.changeRole);
 
 export default router;

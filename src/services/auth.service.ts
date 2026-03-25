@@ -10,7 +10,7 @@ import {
 } from "../types/auth.types";
 import { env } from "../config/env";
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Helpers 
 const signToken = (payload: JwtPayload): string =>
   jwt.sign(payload, env.JWT_SECRET, {
     expiresIn: env.JWT_EXPIRES_IN,
@@ -24,10 +24,10 @@ const buildAuthResponse = (
   accessToken: token,
 });
 
-// ── Service ───────────────────────────────────────────────────────────────────
+// ── Service
 export class AuthService {
 
-  // ── Register ─────────────────────────────────────────────────────────────
+  // ── Register
   async register(dto: RegisterDTO): Promise<AuthResponse> {
     // Block ADMIN role from public registration
     if ((dto.role as string) === Role.ADMIN) {
@@ -61,7 +61,7 @@ export class AuthService {
     );
   }
 
-  // ── Login ─────────────────────────────────────────────────────────────────
+  // ── Login 
   async login(dto: LoginDTO): Promise<AuthResponse> {
     const user = await User.findByEmail(dto.email);
 
@@ -90,7 +90,7 @@ export class AuthService {
     );
   }
 
-  // ── Get profile ───────────────────────────────────────────────────────────
+  // ── Get profile 
   async getProfile(userId: string) {
     const user = await User.findById(userId);
     if (!user) {
@@ -99,7 +99,7 @@ export class AuthService {
     return user;
   }
 
-  // ── Admin: change user role ───────────────────────────────────────────────
+  // ── Admin: change user role 
   async changeRole(userId: string, newRole: Role) {
     const user = await User.findByIdAndUpdate(
       userId,

@@ -1,7 +1,7 @@
 import { Request } from "express";
 import { Document, Types } from "mongoose";
 
-// ── Roles ─────────────────────────────────────────────────────────────────────
+// ── Roles 
 export enum Role {
   USER      = "USER",       // Developer — can view & apply for jobs
   RECRUITER = "RECRUITER",  // Company/HR — can post & manage jobs
@@ -11,7 +11,7 @@ export enum Role {
 // Roles allowed during public registration (ADMIN is excluded)
 export const PUBLIC_ROLES: Role[] = [Role.USER, Role.RECRUITER];
 
-// ── User interfaces ───────────────────────────────────────────────────────────
+// ── User interfaces
 export interface IUser {
   name:      string;
   email:     string;
@@ -26,7 +26,7 @@ export interface IUserDocument extends IUser, Document {
   _id: Types.ObjectId;
 }
 
-// ── DTOs ──────────────────────────────────────────────────────────────────────
+// ── DTOs
 export interface RegisterDTO {
   name:     string;
   email:    string;
@@ -49,7 +49,7 @@ export interface AuthResponse {
   accessToken: string;
 }
 
-// ── JWT ───────────────────────────────────────────────────────────────────────
+// ── JWT 
 export interface JwtPayload {
   userId: string;
   email:  string;
@@ -58,7 +58,7 @@ export interface JwtPayload {
   exp?:   number;
 }
 
-// ── Extended Request ──────────────────────────────────────────────────────────
+// ── Extended Request 
 export interface AuthRequest extends Request {
   user?: JwtPayload;
 }

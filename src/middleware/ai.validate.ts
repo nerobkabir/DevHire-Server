@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 
-// ── Chat ──────────────────────────────────────────────────────────────────────
+// ── Chat 
 export const chatRules = [
   body("message")
     .trim()
@@ -20,7 +20,7 @@ export const chatRules = [
     .isString().withMessage("History content must be a string"),
 ];
 
-// ── Search assistant ──────────────────────────────────────────────────────────
+// ── Search assistant 
 export const searchAssistantRules = [
   body("query")
     .trim()
@@ -28,7 +28,7 @@ export const searchAssistantRules = [
     .isLength({ max: 300 }).withMessage("Query must be at most 300 characters"),
 ];
 
-// ── Generate description ──────────────────────────────────────────────────────
+// ── Generate description 
 export const generateDescriptionRules = [
   body("title")
     .trim()
@@ -49,14 +49,14 @@ export const generateDescriptionRules = [
     .isLength({ max: 100 }).withMessage("Location must be at most 100 characters"),
 ];
 
-// ── Review summary ────────────────────────────────────────────────────────────
+// ── Review summary
 export const reviewSummaryRules = [
   body("jobId")
     .notEmpty().withMessage("Job ID is required")
     .isMongoId().withMessage("Invalid Job ID"),
 ];
 
-// ── Resume analysis ───────────────────────────────────────────────────────────
+// ── Resume analysis
 export const resumeAnalysisRules = [
   body("resumeText")
     .trim()

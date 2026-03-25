@@ -9,7 +9,7 @@ import router from "./routes";
 export const createApp = (): Application => {
   const app = express();
 
-  // ── Security middleware ─────────────────────────────────────────────────────
+  // ── Security middleware 
   app.use(helmet());                        // Sets secure HTTP response headers
   app.use(
     cors({
@@ -20,11 +20,11 @@ export const createApp = (): Application => {
     })
   );
 
-  // ── Request parsing ─────────────────────────────────────────────────────────
+  // ── Request parsing 
   app.use(express.json({ limit: "10mb" }));
   app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-  // ── Logging ─────────────────────────────────────────────────────────────────
+  // ── Logging 
   app.use(requestLogger);
 
   // ── Trust proxy (for deployments behind load balancers / reverse proxies) ──
@@ -32,10 +32,10 @@ export const createApp = (): Application => {
     app.set("trust proxy", 1);
   }
 
-  // ── Routes ──────────────────────────────────────────────────────────────────
+  // ── Routes
   app.use("/api/v1", router);
 
-  // ── Error handling (must be last) ───────────────────────────────────────────
+  // ── Error handling (must be last)
   app.use(notFound);
   app.use(errorHandler);
 

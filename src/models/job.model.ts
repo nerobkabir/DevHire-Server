@@ -91,7 +91,7 @@ const jobSchema = new Schema<IJobDocument>(
   }
 );
 
-// ── Indexes ───────────────────────────────────────────────────────────────────
+// ── Indexes 
 jobSchema.index({ title: "text", description: "text", category: "text" });
 jobSchema.index({ category:  1 });
 jobSchema.index({ location:  1 });

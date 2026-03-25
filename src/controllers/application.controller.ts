@@ -9,7 +9,7 @@ import {
 
 export class ApplicationController {
 
-  // ── POST /applications  (USER only) ──────────────────────────────────────
+  // POST /applications  (USER only)
   applyForJob = async (
     req: AuthRequest,
     res: Response,
@@ -27,7 +27,7 @@ export class ApplicationController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /applications/my  (USER — own applications) ───────────────────────
+  // GET /applications/my  (USER — own applications) 
   getMyApplications = async (
     req: AuthRequest,
     res: Response,
@@ -47,7 +47,7 @@ export class ApplicationController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /applications/job/:jobId  (RECRUITER owner or ADMIN) ─────────────
+  // GET /applications/job/:jobId  (RECRUITER owner or ADMIN) 
   getJobApplicants = async (
     req: AuthRequest,
     res: Response,
@@ -71,7 +71,7 @@ export class ApplicationController {
     } catch (err) { next(err); }
   };
 
-  // ── GET /applications  (ADMIN only — all applications) ────────────────────
+  // GET /applications  (ADMIN only — all applications)
   getAllApplications = async (
     req: AuthRequest,
     res: Response,
@@ -90,7 +90,7 @@ export class ApplicationController {
     } catch (err) { next(err); }
   };
 
-  // ── PATCH /applications/:id/status  (RECRUITER or ADMIN) ─────────────────
+  // PATCH /applications/:id/status  (RECRUITER or ADMIN) 
   updateStatus = async (
     req: AuthRequest,
     res: Response,
@@ -115,7 +115,7 @@ export class ApplicationController {
     } catch (err) { next(err); }
   };
 
-  // ── DELETE /applications/:id  (USER withdraw or ADMIN) ───────────────────
+  // DELETE /applications/:id  (USER withdraw or ADMIN)
   deleteApplication = async (
     req: AuthRequest,
     res: Response,

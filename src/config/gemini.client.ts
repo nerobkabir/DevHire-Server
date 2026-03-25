@@ -10,13 +10,13 @@ class GeminiClient {
     this.model  = this.client.getGenerativeModel({ model: "gemini-1.5-flash" });
   }
 
-  // ── Single prompt → text response ─────────────────────────────────────────
+  // Single prompt → text response 
   async generate(prompt: string): Promise<string> {
     const result = await this.model.generateContent(prompt);
     return result.response.text();
   }
 
-  // ── Multi-turn chat ────────────────────────────────────────────────────────
+  // Multi-turn chat 
   async chat(
     history: { role: "user" | "model"; parts: { text: string }[] }[],
     message: string

@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { AuthRequest, JwtPayload, Role } from "../types/auth.types";
 import { env } from "../config/env";
 
-// ── protect: verify JWT token ─────────────────────────────────────────────────
+// ── protect: verify JWT token 
 export const protect = (
   req: AuthRequest,
   res: Response,
@@ -35,7 +35,7 @@ export const protect = (
   }
 };
 
-// ── authorize: generic role guard ─────────────────────────────────────────────
+// ── authorize: generic role guard 
 export const authorize = (...roles: Role[]) =>
   (req: AuthRequest, res: Response, next: NextFunction): void => {
     if (!req.user || !roles.includes(req.user.role)) {
@@ -48,7 +48,7 @@ export const authorize = (...roles: Role[]) =>
     next();
   };
 
-// ── Named role guards (cleaner in route files) ────────────────────────────────
+// ── Named role guards (cleaner in route files) 
 
 /** Only ADMIN */
 export const adminOnly = authorize(Role.ADMIN);

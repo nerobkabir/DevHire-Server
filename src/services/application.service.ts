@@ -9,7 +9,7 @@ import {
 
 export class ApplicationService {
 
-  // ── Apply for a job (USER only) ───────────────────────────────────────────
+  // ── Apply for a job (USER only)
   async applyForJob(
     dto:         CreateApplicationDTO,
     applicantId: string
@@ -44,7 +44,7 @@ export class ApplicationService {
     ]);
   }
 
-  // ── Get my applications (USER) ────────────────────────────────────────────
+  // ── Get my applications (USER) 
   async getMyApplications(applicantId: string, query: ApplicationQuery) {
     const page  = Math.max(1, parseInt(query.page  ?? "1"));
     const limit = Math.min(50, parseInt(query.limit ?? "10"));
@@ -68,7 +68,7 @@ export class ApplicationService {
     };
   }
 
-  // ── Get applicants for a job (RECRUITER or ADMIN) ─────────────────────────
+  // ── Get applicants for a job (RECRUITER or ADMIN) 
   async getJobApplicants(
     jobId:       string,
     requesterId: string,
@@ -111,7 +111,7 @@ export class ApplicationService {
     };
   }
 
-  // ── Get all applications (ADMIN only) ─────────────────────────────────────
+  // ── Get all applications (ADMIN only)
   async getAllApplications(query: ApplicationQuery) {
     const page  = Math.max(1, parseInt(query.page  ?? "1"));
     const limit = Math.min(50, parseInt(query.limit ?? "10"));
@@ -136,7 +136,7 @@ export class ApplicationService {
     };
   }
 
-  // ── Update application status (RECRUITER or ADMIN) ────────────────────────
+  // ── Update application status (RECRUITER or ADMIN) 
   async updateStatus(
     applicationId: string,
     dto:           UpdateApplicationStatusDTO,
@@ -163,7 +163,7 @@ export class ApplicationService {
     return application;
   }
 
-  // ── Delete / withdraw application (USER own or ADMIN) ─────────────────────
+  // ── Delete / withdraw application (USER own or ADMIN) 
   async deleteApplication(
     applicationId: string,
     requesterId:   string,

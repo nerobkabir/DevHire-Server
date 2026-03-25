@@ -1,7 +1,7 @@
 import { body, param, query } from "express-validator";
 import { JobCategory, JobStatus, JobType } from "../types/job.types";
 
-// ── Create job ────────────────────────────────────────────────────────────────
+// ── Create job 
 export const createJobRules = [
   body("title")
     .trim()
@@ -44,7 +44,7 @@ export const createJobRules = [
     ).withMessage("Each skill must be a non-empty string"),
 ];
 
-// ── Update job ────────────────────────────────────────────────────────────────
+// ── Update job
 export const updateJobRules = [
   body("title")
     .optional().trim()
@@ -82,12 +82,12 @@ export const updateJobRules = [
     ).withMessage("Each skill must be a non-empty string"),
 ];
 
-// ── Param: MongoDB ObjectId ───────────────────────────────────────────────────
+// ── Param: MongoDB ObjectId 
 export const objectIdRule = [
   param("id").isMongoId().withMessage("Invalid job ID"),
 ];
 
-// ── Query params ──────────────────────────────────────────────────────────────
+// ── Query params
 export const getJobsQueryRules = [
   query("page")
     .optional().isInt({ min: 1 }).withMessage("Page must be a positive integer"),

@@ -43,7 +43,7 @@ const reviewSchema = new Schema<IReviewDocument>(
   }
 );
 
-// ── One user can review a job only once ───────────────────────────────────────
+// ── One user can review a job only once
 reviewSchema.index({ jobId: 1, userId: 1 }, { unique: true });
 reviewSchema.index({ jobId: 1 });
 reviewSchema.index({ userId: 1 });

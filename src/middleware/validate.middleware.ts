@@ -2,7 +2,7 @@ import { body, validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
 import { PUBLIC_ROLES } from "../types/auth.types";
 
-// ── Run validation ────────────────────────────────────────────────────────────
+// ── Run validation 
 export const validate = (
   req: Request,
   res: Response,
@@ -23,7 +23,7 @@ export const validate = (
   next();
 };
 
-// ── Register rules ────────────────────────────────────────────────────────────
+// ── Register rules 
 export const registerRules = [
   body("name")
     .trim()
@@ -48,7 +48,7 @@ export const registerRules = [
     .withMessage(`Role must be one of: ${PUBLIC_ROLES.join(", ")}`),
 ];
 
-// ── Login rules ───────────────────────────────────────────────────────────────
+// ── Login rules 
 export const loginRules = [
   body("email")
     .trim()

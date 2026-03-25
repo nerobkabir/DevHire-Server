@@ -6,7 +6,7 @@ import jobRouter         from "./job.routes";
 import applicationRouter from "./application.routes";
 import reviewRouter      from "./review.routes";
 import dashboardRouter   from "./dashboard.routes";
-import aiRouter          from "./ai.routes";           // ← নতুন
+import aiRouter          from "./ai.routes";           
 
 const router = Router();
 
@@ -17,6 +17,6 @@ router.use("/jobs",         jobRouter);
 router.use("/applications", applicationRouter);
 router.use("/reviews",      reviewRouter);
 router.use("/dashboard",    dashboardRouter);
-router.use("/ai",           aiRouter);                 // ← নতুন
+router.use("/ai",           aiRouter);                
 
 export default router;

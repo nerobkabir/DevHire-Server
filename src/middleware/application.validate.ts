@@ -1,7 +1,7 @@
 import { body, param, query } from "express-validator";
 import { ApplicationStatus }  from "../types/application.types";
 
-// ── Apply for job ─────────────────────────────────────────────────────────────
+// ── Apply for job 
 export const applyRules = [
   body("jobId")
     .notEmpty().withMessage("Job ID is required")
@@ -13,7 +13,7 @@ export const applyRules = [
     .isLength({ max: 2000 }).withMessage("Cover letter must be at most 2000 characters"),
 ];
 
-// ── Update status ─────────────────────────────────────────────────────────────
+// ── Update status 
 export const updateStatusRules = [
   body("status")
     .notEmpty().withMessage("Status is required")
@@ -23,7 +23,7 @@ export const updateStatusRules = [
     ),
 ];
 
-// ── Param: ObjectId ───────────────────────────────────────────────────────────
+// ── Param: ObjectId 
 export const objectIdRule = [
   param("id").isMongoId().withMessage("Invalid application ID"),
 ];
@@ -32,7 +32,7 @@ export const jobIdParamRule = [
   param("jobId").isMongoId().withMessage("Invalid job ID"),
 ];
 
-// ── Query params ──────────────────────────────────────────────────────────────
+// ── Query params
 export const applicationQueryRules = [
   query("page")
     .optional().isInt({ min: 1 }).withMessage("Page must be a positive integer"),
