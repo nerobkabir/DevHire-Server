@@ -1,7 +1,7 @@
 import { body, param, query } from "express-validator";
 import { JobCategory, JobStatus, JobType } from "../types/job.types";
 
-// ── Create job 
+// ── Create job ─────────────────────────────────────────────────────────────────
 export const createJobRules = [
   body("title")
     .trim()
@@ -44,7 +44,7 @@ export const createJobRules = [
     ).withMessage("Each skill must be a non-empty string"),
 ];
 
-// ── Update job
+// ── Update job ─────────────────────────────────────────────────────────────────
 export const updateJobRules = [
   body("title")
     .optional().trim()
@@ -82,24 +82,28 @@ export const updateJobRules = [
     ).withMessage("Each skill must be a non-empty string"),
 ];
 
-// ── Param: MongoDB ObjectId 
+// ── Param: MongoDB ObjectId ────────────────────────────────────────────────────
 export const objectIdRule = [
   param("id").isMongoId().withMessage("Invalid job ID"),
 ];
 
-// ── Query params
+// ── Query params ───────────────────────────────────────────────────────────────
 export const getJobsQueryRules = [
   query("page")
-    .optional().isInt({ min: 1 }).withMessage("Page must be a positive integer"),
+    .optional()
+    .isInt({ min: 1 }).withMessage("Page must be a positive integer"),
 
   query("limit")
-    .optional().isInt({ min: 1, max: 50 }).withMessage("Limit must be 1–50"),
+    .optional()
+    .isInt({ min: 1, max: 200 }).withMessage("Limit must be 1–200"),  // ← 50 থেকে 200 করা হয়েছে
 
   query("salaryMin")
-    .optional().isNumeric().withMessage("salaryMin must be a number"),
+    .optional()
+    .isNumeric().withMessage("salaryMin must be a number"),
 
   query("salaryMax")
-    .optional().isNumeric().withMessage("salaryMax must be a number"),
+    .optional()
+    .isNumeric().withMessage("salaryMax must be a number"),
 
   query("category")
     .optional()
