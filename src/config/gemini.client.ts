@@ -7,21 +7,27 @@ class GeminiClient {
 
   constructor() {
     this.client = new GoogleGenerativeAI(env.GEMINI_API_KEY);
-    this.model  = this.client.getGenerativeModel({ model: "gemini-1.5-flash" });
+    this.model  = this.client.getGenerativeModel({ model: "gemini-2.0-flash" });
   }
 
-  // Single prompt → text response 
+  // Single prompt → text response
   async generate(prompt: string): Promise<string> {
     const result = await this.model.generateContent(prompt);
     return result.response.text();
   }
 
-  // Multi-turn chat 
+  // Multi-turn chat
   async chat(
     history: { role: "user" | "model"; parts: { text: string }[] }[],
     message: string
   ): Promise<string> {
-    const chat  = this.model.startChat({ history });
+    // history সবসময় "user" role দিয়ে শুরু হওয়া দরকার
+    // প্রথম "model" message থাকলে Gemini error দেয়
+    const safeHistory = history.length > 0 && history[0].role === "model"
+      ? history.slice(1)
+      : history;
+
+    const chat   = this.model.startChat({ history: safeHistory });
     const result = await chat.sendMessage(message);
     return result.response.text();
   }
