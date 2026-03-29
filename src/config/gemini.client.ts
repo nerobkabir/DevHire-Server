@@ -8,7 +8,7 @@ class GeminiClient {
   constructor() {
     this.client = new GoogleGenerativeAI(env.GEMINI_API_KEY);
     this.model  = this.client.getGenerativeModel(
-      { model: "gemini-1.5-flash" },
+      { model: "gemini-pro" },
       { apiVersion: "v1" }
     );
   }
@@ -24,8 +24,6 @@ class GeminiClient {
     history: { role: "user" | "model"; parts: { text: string }[] }[],
     message: string
   ): Promise<string> {
-    // history সবসময় "user" role দিয়ে শুরু হওয়া দরকার
-    // প্রথম "model" message থাকলে Gemini error দেয়
     const safeHistory = history.length > 0 && history[0].role === "model"
       ? history.slice(1)
       : history;
