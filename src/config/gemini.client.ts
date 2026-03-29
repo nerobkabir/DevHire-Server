@@ -7,7 +7,7 @@ class GeminiClient {
 
   constructor() {
     this.client = new GoogleGenerativeAI(env.GEMINI_API_KEY);
-    this.model = this.client.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
+    this.model = this.client.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
   }
 
   // Single prompt → text response
