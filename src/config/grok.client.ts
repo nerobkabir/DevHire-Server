@@ -15,12 +15,12 @@ class GrokClient {
     this.apiKey = env.GROK_API_KEY;
   }
 
-  // ── Single prompt ─────────────────────────────────────────────────────────
+  // Single prompt
   async generate(prompt: string): Promise<string> {
     return this.chat([{ role: "user", content: prompt }]);
   }
 
-  // ── Multi-turn chat ───────────────────────────────────────────────────────
+  // Multi-turn chat 
   async chat(messages: GrokMessage[]): Promise<string> {
     const response = await fetch(`${GROK_BASE_URL}/chat/completions`, {
       method:  "POST",

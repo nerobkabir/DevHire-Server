@@ -2,11 +2,11 @@ import { gemini } from "./gemini.client";
 import { grok }   from "./grok.client";
 import { env }    from "./env";
 
-// ── Which provider is available ───────────────────────────────────────────────
+// ── Which provider is available 
 const hasGemini = !!env.GEMINI_API_KEY;
 const hasGrok   = !!env.GROK_API_KEY;
 
-// ── Universal AI client ───────────────────────────────────────────────────────
+// ── Universal AI client
 // Uses Gemini first. If Gemini fails or key is missing, falls back to Grok.
 export const ai = {
   async generate(prompt: string): Promise<string> {
