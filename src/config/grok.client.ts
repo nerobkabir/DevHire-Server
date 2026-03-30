@@ -41,7 +41,7 @@ class GrokClient {
       throw new Error(`Grok API error: ${response.status} — ${err}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as { choices: { message: { content: string } }[] };
     return data.choices?.[0]?.message?.content ?? "";
   }
 }
