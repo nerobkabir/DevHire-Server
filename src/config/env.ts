@@ -7,16 +7,24 @@ const requireEnv = (key: string, fallback?: string): string => {
   return value;
 };
 
+// Optional env — returns empty string if not set
+const optionalEnv = (key: string): string =>
+  process.env[key] ?? "";
+
 export const env = {
   NODE_ENV:       requireEnv("NODE_ENV",       "development"),
-  PORT:           parseInt(requireEnv("PORT",  "3000"), 10),
+  PORT:           parseInt(requireEnv("PORT",  "4000"), 10),
   HOST:           requireEnv("HOST",           "localhost"),
   CORS_ORIGIN:    requireEnv("CORS_ORIGIN",    "*"),
   MONGODB_URI:    requireEnv("MONGODB_URI"),
-  DB_NAME:        requireEnv("DB_NAME",        "myapp"),
+  DB_NAME:        requireEnv("DB_NAME",        "devhire"),
   JWT_SECRET:     requireEnv("JWT_SECRET"),
   JWT_EXPIRES_IN: requireEnv("JWT_EXPIRES_IN", "7d"),
-  GEMINI_API_KEY: requireEnv("GEMINI_API_KEY"),         
+
+  // AI providers — at least one must be set
+  GEMINI_API_KEY: optionalEnv("GEMINI_API_KEY"),
+  GROK_API_KEY:   optionalEnv("GROK_API_KEY"),
+
   isDevelopment:  () => process.env.NODE_ENV === "development",
   isProduction:   () => process.env.NODE_ENV === "production",
 } as const;
