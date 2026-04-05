@@ -1,6 +1,6 @@
+// grok.client.ts
 import { env } from "./env";
 
-// Grok uses OpenAI-compatible API
 const GROK_BASE_URL = "https://api.x.ai/v1";
 
 interface GrokMessage {
@@ -15,12 +15,10 @@ class GrokClient {
     this.apiKey = env.GROK_API_KEY;
   }
 
-  // Single prompt
   async generate(prompt: string): Promise<string> {
     return this.chat([{ role: "user", content: prompt }]);
   }
 
-  // Multi-turn chat 
   async chat(messages: GrokMessage[]): Promise<string> {
     const response = await fetch(`${GROK_BASE_URL}/chat/completions`, {
       method:  "POST",
@@ -29,7 +27,7 @@ class GrokClient {
         "Authorization": `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify({
-        model:       "grok-3-mini",     // latest fast model
+        model:       "grok-beta",   // ✅ grok-3-mini → grok-beta
         messages,
         max_tokens:  1024,
         temperature: 0.7,
